@@ -11,19 +11,19 @@ function useQuery() {
 
 const Job = () => {
   const [jobList, setJobList] = useState([]);
-  const [originalJobs, setOriginalJobs] = useState([]);
+  const [originalList, setOriginalList] = useState([]);
   const history = useHistory();
-  let query = useQuery();
+  const query = useQuery();
   let [keyword, setKeyword] = useState(query.get(QUERYSTR_PREFIX));
 
-  const handleSearch = (e) => {
-    let filteredJobs = originalJobs;
-    if (e) {
-      e.preventDefault();
-      history.push(`/jobs/?${QUERYSTR_PREFIX}=${encodeURIComponent(keyword)}`);
+  const handleSearch = (event) => {
+    let filteredJobs = originalList;
+    if (event) {
+      event.preventDefault();
+      history.push(`/?${QUERYSTR_PREFIX}=${encodeURIComponent(keyword)}`);
     }
     if (keyword) {
-      filteredJobs = originalJobs.filter((job) =>
+      filteredJobs = originalList.filter((job) =>
         job.title.toLowerCase().includes(keyword.toLowerCase())
       );
     }
@@ -37,7 +37,7 @@ const Job = () => {
       const response = await fetch(url);
       const data = await response.json();
       console.log("data", data);
-      setJobList(data);
+      setOriginalList(data);
     } catch (err) {
       console.log(err.message);
     }
@@ -53,7 +53,7 @@ const Job = () => {
 
   useEffect(() => {
     handleSearch();
-  }, [originalJobs]);
+  }, [originalList]);
 
   return (
     <Container>
