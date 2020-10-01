@@ -18,10 +18,11 @@ const Login = () => {
     };
     dispatch(authAction.login(user));
     console.log(isAuthenticated);
-    if (isAuthenticated === true) {
-      history.push("/");
-    }
   };
+
+  if (isAuthenticated === true) {
+    history.push("/");
+  }
 
   return (
     <Container>
@@ -55,6 +56,9 @@ const Login = () => {
           Submit
         </Button>
       </Form>
+      <a href="" onClick={() => history.push("/")}>
+        Back to main page
+      </a>
     </Container>
   );
 };

@@ -5,11 +5,13 @@ import { faMapMarker } from "@fortawesome/free-solid-svg-icons";
 import { faCalendar } from "@fortawesome/free-solid-svg-icons";
 import { faDollarSign } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useHistory } from "react-router-dom";
 import moment from "moment";
 
-const JobDetail = ({ name }) => {
+const JobDetail = () => {
   const { id } = useParams();
   const [job, setJob] = useState(null);
+  const history = useHistory();
 
   const getDetailData = async () => {
     const url = `${process.env.REACT_APP_BACKEND_SERVER_URL}/jobs/${id}`;
@@ -78,6 +80,9 @@ const JobDetail = ({ name }) => {
             >
               Apply Now
             </Button>
+            <a href="" onClick={() => history.push("/")}>
+              Back to main page
+            </a>
           </Col>
         </Row>
       )}

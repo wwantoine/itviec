@@ -1,5 +1,3 @@
-import userEvent from "@testing-library/user-event";
-
 const login = (user) => (dispatch) => {
   dispatch({ type: "LOGIN_REQUEST", payload: null });
   try {

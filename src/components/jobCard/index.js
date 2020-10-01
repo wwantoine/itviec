@@ -2,7 +2,7 @@ import React from "react";
 import { Row, Col, Badge } from "react-bootstrap";
 import moment from "moment";
 
-const JobCard = ({ job, key, goToJobDetail }) => {
+const JobCard = ({ job, goToJobDetail }) => {
   return (
     <div className="job-content" onClick={() => goToJobDetail(job.id)}>
       <Row>
